@@ -1,0 +1,50 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__section {
+  margin-right: 104px;
+  display: flex;
+  align-items: center;
+}
+
+.footer__text {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #b6bcbf;
+  margin-left: 104px;
+}
+
+.footer__home {
+  color: #1a1b22;
+  font-weight: 400;
+  margin-right: 40px;
+}
+
+.footer__tt {
+  color: #1a1b22;
+  font-weight: 400;
+  margin-right: 40px;
+}
+
+.footer__git {
+  margin-right: 26px;
+  width: 22px;
+  height: 22px;
+}
+
+.footer__facebook {
+  width: 20px;
+  height: 20px;
+}
+
+.footer__git:hover .footer__button-img {
+  opacity: 70%;
+}
+
+.footer__facebook:hover .footer__button-img {
+  opacity: 70%;
+}

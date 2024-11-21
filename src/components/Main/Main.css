@@ -1,0 +1,5 @@
+.main__background-img {
+  position: absolute;
+  top: 0px;
+  z-index: -1;
+}
