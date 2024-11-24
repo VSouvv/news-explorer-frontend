@@ -2,7 +2,7 @@ import "./SavedNewsHeader.css";
 
 export default function SavedNewsHeader(props) {
   return (
-    <section className="page__section saved-news-header">
+    <section className=" saved-news-header">
       <p className="saved-news-header__subtitle">Saved articles</p>
       <h3 className="saved-news-header__title">
         Elise, you have 5 saved articles

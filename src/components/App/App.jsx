@@ -9,14 +9,17 @@ import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
 
 function App() {
-  const [count, setCount] = React.useState(0);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   return (
     <>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/saved-news" element={<SavedNews />} />
+        <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
+        <Route
+          path="/saved-news"
+          element={<SavedNews isLoggedIn={isLoggedIn} />}
+        />
       </Routes>
       <Footer />
     </>

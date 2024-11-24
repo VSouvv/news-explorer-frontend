@@ -1,7 +1,8 @@
 .saved-news-header {
-  margin: 40px 0 56px 104px;
   display: flex;
   flex-direction: column;
+  margin-left: 104px;
+  margin-bottom: 56px;
 }
 
 .saved-news-header__subtitle {
