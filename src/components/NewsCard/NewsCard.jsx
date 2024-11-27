@@ -16,7 +16,7 @@ export default function NewsCard(props) {
         </div>
         <p className="news-card__author">{props.details.author}</p>
       </div>
-      {props.isSaved ? (
+      {props.currentRoute === "Saved" ? (
         <>
           <button
             className="news-card__save-button news-card__save-button_unsave"

@@ -5,7 +5,7 @@ export default function SavedNewsHeader(props) {
     <section className=" saved-news-header">
       <p className="saved-news-header__subtitle">Saved articles</p>
       <h3 className="saved-news-header__title">
-        Elise, you have 5 saved articles
+        {`${props.currentUser.name}, you have 5 saved articles`}
       </h3>
       <p className="saved-news-header__keyword-list">
         {"By keywords: "}

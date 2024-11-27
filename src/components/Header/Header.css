@@ -9,6 +9,11 @@
   align-items: center;
 }
 
+.header__section {
+  display: flex;
+  align-items: center;
+}
+
 .header__logo {
   color: #ffffff;
   font-family: "Roboto Slab";
@@ -17,14 +22,39 @@
   margin: 0;
 }
 
+.header__text-button {
+  background: none;
+  border: none;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 0;
+  color: #b6bcbf;
+}
+
+.header__text-button:hover {
+  cursor: pointer;
+}
+
 .header__home {
-  color: #ffffff;
   width: 68px;
   height: 80px;
 }
 
-.header__home_active {
+.header__saved {
+  width: 178px;
+  height: 80px;
+  margin-left: 36px;
+}
+
+.header__tab_active {
+  color: #ffffff;
   border-bottom: solid 3px #ffffff;
+}
+
+.header__tab_active:hover {
+  cursor: default;
 }
 
 .header__sign-in {
@@ -37,6 +67,80 @@
   font-family: "Roboto";
   font-weight: 500;
   font-size: 18px;
+  line-height: 24px;
   margin-left: 34px;
   padding: 0;
+}
+
+.header__sign-in:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
+.header__profile {
+  color: #ffffff;
+  height: 48px;
+  background: none;
+  border-radius: 100px;
+  border: solid 1px #ffffff;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.header__profile-name {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin-left: 34px;
+  margin: 0;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header__profile-logout {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: url(../../assets/logout.svg) center no-repeat;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.header__profile-logout:hover {
+  cursor: pointer;
+}
+
+.header_theme_dark {
+  color: #1a1b22;
+}
+
+.header__sign-in_theme_dark {
+  color: #1a1b22;
+  border: solid 1px #1a1b22;
+}
+
+.header__tab_active-dark {
+  border-bottom: solid 3px #1a1b22;
+}
+
+.header__tab_active-dark:hover {
+  cursor: default;
+}
+
+.header__profile_theme_dark {
+  border: solid 1px #1a1b22;
+}
+
+.header__profile-logout_theme_dark {
+  background-image: url(../../assets/logout_dark.svg);
 }

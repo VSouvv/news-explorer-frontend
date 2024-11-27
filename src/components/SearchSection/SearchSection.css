@@ -53,6 +53,13 @@
   font-size: 16px;
   padding: 0;
   margin-left: 24px;
+  width: 400px;
+  height: 40px;
+  caret-color: #2f71e5;
+}
+
+.search-section__input:focus {
+  outline: none;
 }
 
 .search-section__submit {

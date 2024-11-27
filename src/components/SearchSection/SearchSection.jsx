@@ -9,7 +9,7 @@ export default function SearchSection(props) {
           Find the latest news on any topic and save them in your personal
           account.
         </p>
-        <form className="search-section__form">
+        <form className="search-section__form" onSubmit={props.onSearch}>
           <div className="search-section__search-bar">
             <input
               type="text"
