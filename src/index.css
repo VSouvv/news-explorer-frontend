@@ -1,3 +1,4 @@
+@import url(./vendor/normalize.css);
 @import url(./vendor/fonts.css);
 
 .page {
@@ -7,7 +8,7 @@
 .page__content {
   min-height: 100vh;
   position: relative;
-  font-family: "Roboto";
+  font-family: "Roboto", "Inter", sans-serif;
   font-weight: 400;
   color: #1a1b22;
 }

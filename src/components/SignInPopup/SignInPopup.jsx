@@ -8,6 +8,7 @@ export default function SignInPopup(props) {
       modalType="sign-in"
       title="Sign in"
       submitText="Sign in"
+      onSubmit={props.handleSignIn}
       alternateButton={
         <p className="modal__form-swap-text">
           or{" "}
@@ -26,7 +27,7 @@ export default function SignInPopup(props) {
         <input
           className="modal__form-input"
           type="email"
-          placeHolder="Enter Email"
+          placeholder="Enter Email"
         ></input>
       </label>
       <label className="modal__input-label modal__input-label_last">
@@ -34,7 +35,7 @@ export default function SignInPopup(props) {
         <input
           className="modal__form-input"
           type="password"
-          placeHolder="Enter Password"
+          placeholder="Enter Password"
         ></input>
       </label>
     </PopupWithForm>

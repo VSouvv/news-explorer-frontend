@@ -1,27 +1,43 @@
 import "./SearchSection.css";
+import notFound from "../../assets/not-found.svg";
+import NewsCardList from "../NewsCardList/NewsCardList";
+import Preloader from "../Preloader/Preloader";
 
 export default function SearchSection(props) {
   return (
-    <section className="page__section search-section">
-      <div className="search-section__content">
-        <h1 className="search-section__title">What's going on in the world?</h1>
-        <p className="search-section__description">
-          Find the latest news on any topic and save them in your personal
-          account.
-        </p>
-        <form className="search-section__form" onSubmit={props.onSearch}>
-          <div className="search-section__search-bar">
-            <input
-              type="text"
-              className="search-section__input"
-              placeholder="Enter Topic"
-            ></input>
-            <button type="submit" className="search-section__submit">
-              Search
-            </button>
-          </div>
-        </form>
-      </div>
+    <section
+      className={`search-section ${
+        !props.isSearching && !props.hasSearched && "search-section_hidden"
+      }`}
+    >
+      {props.isSearching ? (
+        <>
+          <Preloader />
+          <p className="search-section__searching">Searching for news...</p>
+        </>
+      ) : props.hasSearched ? (
+        props.cards.length === 0 ? (
+          <>
+            <img className="search-section__nothing-img" src={notFound} />
+            <h4 className="search-section__nothing-title">Nothing Found</h4>
+            <p className="search-section__nothing-description">
+              Sorry, but nothing matched your search terms.
+            </p>
+          </>
+        ) : (
+          <>
+            <h3 className="search-section__title">Search results</h3>
+            <NewsCardList
+              isLoggedIn={props.isLoggedIn}
+              currentRoute={props.currentRoute}
+              cards={props.cards}
+            />
+            <button className="search-section__show-more">Show More</button>
+          </>
+        )
+      ) : (
+        ""
+      )}
     </section>
   );
 }

@@ -2,4 +2,11 @@
   position: absolute;
   top: 0px;
   z-index: -1;
+  max-width: 100%;
+}
+
+@media (max-width: 1250px) {
+  .main__background-img {
+    width: 100%;
+  }
 }

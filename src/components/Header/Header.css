@@ -87,10 +87,10 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  padding: 0;
   display: flex;
   align-items: center;
   padding: 0 15px;
+  margin-left: 32px;
 }
 
 .header__profile-name {
@@ -143,4 +143,51 @@
 
 .header__profile-logout_theme_dark {
   background-image: url(../../assets/logout_dark.svg);
+}
+
+@media (max-width: 900px) {
+  .header__content {
+    padding: 0 40px;
+  }
+
+  .header__home {
+    width: 68px;
+    height: 66px;
+  }
+
+  .header__saved {
+    width: 160px;
+    height: 66px;
+    margin-left: 16px;
+  }
+
+  .header__text-button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .header__sign-in {
+    width: 152px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 16px;
+  }
+  .header__profile-name {
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 15px;
+    margin: 0;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header__profile {
+    margin-left: 16px;
+  }
+  .header__profile-logout {
+    margin-left: 13px;
+  }
 }

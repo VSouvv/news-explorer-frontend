@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logoutLight from "../../assets/logout.svg";
 import logoutDark from "../../assets/logout_dark.svg";
@@ -11,13 +12,13 @@ export default function Header(props) {
   return (
     <header
       className={`page__section header ${
-        props.useDarkTheme && "header_theme_dark"
+        props.currentRoute === "Saved" && "header_theme_dark"
       }`}
     >
       <div className="header__content">
         <h2
           className={`header__logo ${
-            props.useDarkTheme && "header_theme_dark"
+            props.currentRoute === "Saved" && "header_theme_dark"
           }`}
         >
           NewsExplorer
@@ -25,56 +26,50 @@ export default function Header(props) {
         <div className="header__section">
           <button
             className={`header__text-button header__home ${
-              props.useDarkTheme && "header_theme_dark"
-            } ${
-              props.activeTab === "Home"
-                ? props.useDarkTheme
-                  ? "header__tab_active-dark"
-                  : "header__tab_active"
-                : ""
-            }`}
+              props.currentRoute === "Saved" && "header_theme_dark"
+            } ${props.currentRoute === "Home" && "header__tab_active"}`}
           >
             Home
           </button>
           {props.isLoggedIn ? (
             <>
               <button
+                onClick={props.handleNavigateSaved}
                 className={`header__text-button header__saved ${
-                  props.useDarkTheme && "header_theme_dark"
-                } ${
-                  props.activeTab === "Saved"
-                    ? props.useDarkTheme
-                      ? "header__tab_active-dark"
-                      : "header__tab_active"
-                    : ""
+                  props.currentRoute === "Saved" &&
+                  "header_theme_dark header__tab_active-dark"
                 }`}
               >
                 Saved articles
               </button>
               <div
                 className={`header__profile ${
-                  props.useDarkTheme && "header__profile_theme_dark"
+                  props.currentRoute === "Saved" && "header__profile_theme_dark"
                 }`}
               >
                 <p
                   className={`header__profile-name ${
-                    props.useDarkTheme && "header_theme_dark"
+                    props.currentRoute === "Saved" && "header_theme_dark"
                   }`}
                 >
                   {currentUser.name}
                 </p>
                 <button
+                  onClick={props.handleLogOut}
                   className={`header__profile-logout ${
-                    props.useDarkTheme && "header__profile-logout_theme_dark"
+                    props.currentRoute === "Saved" &&
+                    "header__profile-logout_theme_dark"
                   }`}
-                  src={props.useDarkTheme ? logoutDark : logoutLight}
+                  src={
+                    props.currentRoute === "Saved" ? logoutDark : logoutLight
+                  }
                 ></button>
               </div>
             </>
           ) : (
             <button
               className={`header__sign-in ${
-                props.useDarkTheme && "header__sign-in_theme_dark"
+                props.currentRoute === "Saved" && "header__sign-in_theme_dark"
               }`}
               onClick={props.openSignInModal}
             >

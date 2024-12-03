@@ -48,3 +48,12 @@
 .footer__facebook:hover .footer__button-img {
   opacity: 70%;
 }
+
+@media (max-width: 800px) {
+  .footer__text {
+    margin-left: 40px;
+  }
+  .footer__section {
+    margin-right: 40px;
+  }
+}

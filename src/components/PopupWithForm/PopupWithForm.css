@@ -61,6 +61,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  caret-color: #2f71e5;
 }
 
 .modal__form-input:focus {

@@ -8,7 +8,7 @@ export default function PopupWithForm(props) {
       modalType={props.modalType}
       activeModal={props.activeModal}
     >
-      <form className="modal__form">
+      <form className="modal__form" onSubmit={props.onSubmit}>
         {props.children}
         <button className="modal__form-submit" type="submit">
           {props.submitText}
