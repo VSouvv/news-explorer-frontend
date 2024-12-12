@@ -1,9 +1,15 @@
 import "./SearchSection.css";
+import React from "react";
+
 import notFound from "../../assets/not-found.svg";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
 
 export default function SearchSection(props) {
+  const handleShowMore = () => {
+    props.setDisplayAmount(props.displayAmount + 3);
+  };
+
   return (
     <section
       className={`search-section ${
@@ -31,8 +37,18 @@ export default function SearchSection(props) {
               isLoggedIn={props.isLoggedIn}
               currentRoute={props.currentRoute}
               cards={props.cards}
+              displayAmount={props.displayAmount}
             />
-            <button className="search-section__show-more">Show More</button>
+            {props.cards.length <= props.displayAmount ? (
+              ""
+            ) : (
+              <button
+                className="search-section__show-more"
+                onClick={handleShowMore}
+              >
+                Show More
+              </button>
+            )}
           </>
         )
       ) : (

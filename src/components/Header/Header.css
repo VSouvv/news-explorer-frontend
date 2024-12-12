@@ -1,5 +1,5 @@
 .header {
-  border-bottom: solid 1px #c4c4c467;
+  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
 }
 
 .header__content {
@@ -99,7 +99,6 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  margin-left: 34px;
   margin: 0;
   max-width: 150px;
   white-space: nowrap;
@@ -124,6 +123,11 @@
   color: #1a1b22;
 }
 
+.header_header-theme_dark {
+  color: #1a1b22;
+  box-shadow: 0px -1px 0px 0px #d1d2d6 inset;
+}
+
 .header__sign-in_theme_dark {
   color: #1a1b22;
   border: solid 1px #1a1b22;
@@ -143,6 +147,35 @@
 
 .header__profile-logout_theme_dark {
   background-image: url(../../assets/logout_dark.svg);
+}
+
+.header__phone-content {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo_device_phone {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.header__phone-menu {
+  background: none;
+  border: none;
+  padding: 0;
+  height: 24px;
+  width: 24px;
+  background-image: url(../../assets/phone-menu.svg);
+}
+
+.header__phone-menu:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.header__phone-menu_dark {
+  background-image: url(../../assets/phone-menu_dark.svg);
 }
 
 @media (max-width: 900px) {
@@ -177,7 +210,6 @@
   .header__profile-name {
     font-size: 16px;
     line-height: 24px;
-    margin-left: 15px;
     margin: 0;
     max-width: 150px;
     white-space: nowrap;
@@ -189,5 +221,32 @@
   }
   .header__profile-logout {
     margin-left: 13px;
+  }
+}
+
+@media (max-width: 650px) {
+  .header__content {
+    padding: 0 10px;
+  }
+  .header__saved {
+    margin-left: 10px;
+  }
+
+  .header__text-button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .header__sign-in {
+    margin-left: 10px;
+  }
+  .header__profile {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 540px) {
+  .header_phone-hidden {
+    visibility: hidden;
   }
 }

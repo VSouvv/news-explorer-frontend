@@ -76,3 +76,24 @@
   color: #000000;
   margin: 16px 0 0;
 }
+
+@media (max-width: 540px) {
+  .modal__form-submit {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .modal__input-label {
+    width: 100%;
+    max-width: 358px;
+    margin-top: 30px;
+  }
+
+  .modal__input-label_first {
+    margin-top: 22px;
+  }
+
+  .modal__input-label_last {
+    margin-bottom: 18px;
+  }
+}

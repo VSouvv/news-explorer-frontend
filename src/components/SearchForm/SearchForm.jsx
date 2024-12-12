@@ -1,6 +1,10 @@
 import "./SearchForm.css";
 
 export default function SearchForm(props) {
+  const handleSearchInputChange = (evt) => {
+    props.setSearchInput(evt.target.value);
+  };
+
   return (
     <section className="page__section search-form">
       <div className="search-form__content">
@@ -10,16 +14,37 @@ export default function SearchForm(props) {
           account.
         </p>
         <form className="search-form__form" onSubmit={props.onSearch}>
-          <div className="search-form__search-bar">
-            <input
-              type="text"
-              className="search-form__input"
-              placeholder="Enter Topic"
-            ></input>
-            <button type="submit" className="search-form__submit">
-              Search
-            </button>
-          </div>
+          {window.innerWidth > 600 ? (
+            <>
+              <div className="search-form__search-bar">
+                <input
+                  type="text"
+                  className="search-form__input"
+                  placeholder="Enter Topic"
+                  value={props.searchInput}
+                  onChange={handleSearchInputChange}
+                ></input>
+                <button type="submit" className="search-form__submit">
+                  Search
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="search-form__search-bar">
+                <input
+                  type="text"
+                  className="search-form__input"
+                  placeholder="Enter Topic"
+                  value={props.searchInput}
+                  onChange={handleSearchInputChange}
+                ></input>
+              </div>
+              <button type="submit" className="search-form__submit">
+                Search
+              </button>
+            </>
+          )}
         </form>
       </div>
     </section>

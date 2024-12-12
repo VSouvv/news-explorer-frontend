@@ -1,6 +1,7 @@
 .footer {
   display: flex;
   justify-content: space-between;
+  padding: 28px 0;
 }
 
 .footer__section {
@@ -15,7 +16,7 @@
   font-size: 16px;
   line-height: 22px;
   color: #b6bcbf;
-  margin-left: 104px;
+  margin: 0 0 0 104px;
 }
 
 .footer__home {
@@ -28,6 +29,8 @@
   color: #1a1b22;
   font-weight: 400;
   margin-right: 40px;
+  max-width: fit-content;
+  text-decoration: none;
 }
 
 .footer__git {
@@ -49,11 +52,34 @@
   opacity: 70%;
 }
 
+.footer__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  margin-left: 16px;
+}
+
 @media (max-width: 800px) {
   .footer__text {
     margin-left: 40px;
   }
   .footer__section {
     margin-right: 40px;
+  }
+}
+
+@media (max-width: 650px) {
+  .footer {
+    flex-direction: column;
+  }
+  .footer__section {
+    margin-right: 18px;
+  }
+  .footer__tt {
+    margin-left: 16px;
+    margin-bottom: 38px;
+  }
+  .footer__text {
+    margin: 0 auto;
   }
 }

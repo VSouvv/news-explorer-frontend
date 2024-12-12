@@ -43,3 +43,17 @@
     margin: 16px 0;
   }
 }
+
+@media (max-width: 400px) {
+  .saved-news-header {
+    margin-left: 16px;
+    margin-bottom: 32px;
+  }
+  .saved-news-header__subtitle {
+    font-size: 12px;
+  }
+  .saved-news-header__title {
+    margin: 16px 0 50px;
+    max-width: 288px;
+  }
+}

@@ -1,6 +1,11 @@
+.about {
+  background-color: #ffffff;
+}
+
 .about__content {
   padding: 80px 104px;
   display: flex;
+  align-items: center;
 }
 
 .about__image {
@@ -69,5 +74,22 @@
   }
   .about__text {
     margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .about__content {
+    padding: 32px 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .about__text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+  }
+  .about__image {
+    margin: 0 0 24px;
   }
 }
