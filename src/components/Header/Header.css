@@ -151,7 +151,7 @@
 
 .header__phone-content {
   padding: 16px;
-  display: flex;
+  display: none;
   justify-content: space-between;
 }
 
@@ -246,6 +246,12 @@
 }
 
 @media (max-width: 540px) {
+  .header__content {
+    display: none;
+  }
+  .header__phone-content {
+    display: flex;
+  }
   .header_phone-hidden {
     visibility: hidden;
   }

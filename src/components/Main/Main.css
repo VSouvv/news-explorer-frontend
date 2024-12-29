@@ -2,11 +2,28 @@
   position: absolute;
   top: 0px;
   z-index: -1;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1440px;
+  background: url(../../assets/search-background.png) center no-repeat;
+  background-size: cover;
+  height: 576px;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1050px) {
   .main__background-img {
-    width: 100%;
+    background-image: url(../../assets/search-background-tablet.png);
+  }
+}
+
+@media (max-width: 800px) {
+  .main__background-img {
+    height: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main__background-img {
+    height: 536px;
+    background-image: url(../../assets/search-background-phone.png);
   }
 }

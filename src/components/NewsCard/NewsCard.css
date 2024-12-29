@@ -149,7 +149,7 @@
     height: 420px;
   }
   .news-card__image {
-    max-height: 150px;
+    height: 150px;
   }
   .news-card__bottom {
     padding: 16px 15px;
@@ -188,17 +188,21 @@
     height: 440px;
   }
   .news-card__image {
-    max-height: 196px;
+    height: 196px;
   }
   .news-card__bottom {
-    padding: 16px 15px;
+    padding: 16px;
+  }
+
+  .news-card__title {
+    height: 48px;
   }
   .news-card__date {
     margin: 0 0 10px;
   }
   .news-card__body {
-    height: 66px;
-    margin: 14px 0 30px;
+    height: 88px;
+    margin: 14px 0 8px;
   }
   .news-card__keyword {
     padding: 0 20px;
