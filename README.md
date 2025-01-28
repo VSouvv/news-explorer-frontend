@@ -1,8 +1,24 @@
-# React + Vite
+# Final Project: News Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the final project of the Web Development program at Triple Ten. It was created using HTML, CSS, JavaScript, and React, based on the design provided through Figma.
 
-Currently, two official plugins are available:
+## Project features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Semantic HTML5
+- Flexbox
+- Grid
+- Flat BEM
+- JS Classes
+- React
+- API intergration
+
+## Plans to Improve Project
+
+- Update about me section
+- Add front-end form validation to provide better user feedback
+- Display back-end messages so the user can know what is going on if something like an error happens
+- Create and integrate backend to make accounts and save news articles
+
+## Deployed Link App
+
+[live Demo](https://VSouvv.github.io/news-explorer-frontend/)

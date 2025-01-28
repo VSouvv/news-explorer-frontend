@@ -1,0 +1,258 @@
+.header {
+  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
+}
+
+.header__content {
+  padding: 0 104px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__section {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  color: #ffffff;
+  font-family: "Roboto Slab";
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
+.header__text-button {
+  background: none;
+  border: none;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 0;
+  color: #b6bcbf;
+}
+
+.header__text-button:hover {
+  cursor: pointer;
+}
+
+.header__home {
+  width: 68px;
+  height: 80px;
+}
+
+.header__saved {
+  width: 178px;
+  height: 80px;
+  margin-left: 36px;
+}
+
+.header__tab_active {
+  color: #ffffff;
+  border-bottom: solid 3px #ffffff;
+}
+
+.header__tab_active:hover {
+  cursor: default;
+}
+
+.header__sign-in {
+  color: #ffffff;
+  width: 176px;
+  height: 48px;
+  background: none;
+  border-radius: 100px;
+  border: solid 1px #ffffff;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin-left: 34px;
+  padding: 0;
+}
+
+.header__sign-in:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
+.header__profile {
+  color: #ffffff;
+  height: 48px;
+  background: none;
+  border-radius: 100px;
+  border: solid 1px #ffffff;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  margin-left: 32px;
+}
+
+.header__profile-name {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header__profile-logout {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: url(../../assets/logout.svg) center no-repeat;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.header__profile-logout:hover {
+  cursor: pointer;
+}
+
+.header_theme_dark {
+  color: #1a1b22;
+}
+
+.header_header-theme_dark {
+  color: #1a1b22;
+  box-shadow: 0px -1px 0px 0px #d1d2d6 inset;
+}
+
+.header__sign-in_theme_dark {
+  color: #1a1b22;
+  border: solid 1px #1a1b22;
+}
+
+.header__tab_active-dark {
+  border-bottom: solid 3px #1a1b22;
+}
+
+.header__tab_active-dark:hover {
+  cursor: default;
+}
+
+.header__profile_theme_dark {
+  border: solid 1px #1a1b22;
+}
+
+.header__profile-logout_theme_dark {
+  background-image: url(../../assets/logout_dark.svg);
+}
+
+.header__phone-content {
+  padding: 16px;
+  display: none;
+  justify-content: space-between;
+}
+
+.header__logo_device_phone {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.header__phone-menu {
+  background: none;
+  border: none;
+  padding: 0;
+  height: 24px;
+  width: 24px;
+  background-image: url(../../assets/phone-menu.svg);
+}
+
+.header__phone-menu:hover {
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.header__phone-menu_dark {
+  background-image: url(../../assets/phone-menu_dark.svg);
+}
+
+@media (max-width: 900px) {
+  .header__content {
+    padding: 0 40px;
+  }
+
+  .header__home {
+    width: 68px;
+    height: 66px;
+  }
+
+  .header__saved {
+    width: 160px;
+    height: 66px;
+    margin-left: 16px;
+  }
+
+  .header__text-button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .header__sign-in {
+    width: 152px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-left: 16px;
+  }
+  .header__profile-name {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header__profile {
+    margin-left: 16px;
+  }
+  .header__profile-logout {
+    margin-left: 13px;
+  }
+}
+
+@media (max-width: 650px) {
+  .header__content {
+    padding: 0 10px;
+  }
+  .header__saved {
+    margin-left: 10px;
+  }
+
+  .header__text-button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .header__sign-in {
+    margin-left: 10px;
+  }
+  .header__profile {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 540px) {
+  .header__content {
+    display: none;
+  }
+  .header__phone-content {
+    display: flex;
+  }
+  .header_phone-hidden {
+    visibility: hidden;
+  }
+}
