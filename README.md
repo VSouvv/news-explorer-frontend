@@ -18,3 +18,7 @@ This is the final project of the Web Development program at Triple Ten. It was c
 - Add front-end form validation to provide better user feedback
 - Display back-end messages so the user can know what is going on if something like an error happens
 - Create and integrate backend to make accounts and save news articles
+
+## Deployed Link App
+
+[live Demo](https://VSouvv.github.io/news-explorer-frontend/)
