@@ -21,4 +21,4 @@ This is the final project of the Web Development program at Triple Ten. It was c
 
 ## Deployed Link App
 
-[live Demo](https://VSouvv.github.io/news-explorer-frontend/)
+[live Demo](https://vsouvv.github.io/news-explorer-frontend/)
