@@ -168,7 +168,10 @@ function App() {
             />
           }
         />
+        {/* Add this route */}
+        <Route path="/news-explorer-frontend" element={<Main />} />
       </Routes>
+
       <Footer handleNavigateHome={handleNavigateHome} />
       <SignUpSuccessPopup activeModal={activeModal} />
       <SignInPopup
