@@ -9,7 +9,6 @@ export default function Popup(props) {
       }`}
     >
       <div className="modal__container">
-        <img className="modal__close" src={closeButton} />
         <img className="modal__close" src={closeButton} alt="close" />
         <h3 className="modal__title">{props.title}</h3>
         {props.children}

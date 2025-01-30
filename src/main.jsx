@@ -4,16 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./components/App/App";
 
-const rootElement = document.getElementById("root");
-
-if (rootElement) {
-  createRoot(rootElement).render(
-    <StrictMode>
-      <BrowserRouter basename="/news-explorer-frontend">
-        <App />
-      </BrowserRouter>
-    </StrictMode>
-  );
-} else {
-  console.error("Root element not found.");
-}
+createRoot(document.querySelector(".page__content")).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
+);

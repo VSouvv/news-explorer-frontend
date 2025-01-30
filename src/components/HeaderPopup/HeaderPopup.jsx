@@ -23,7 +23,6 @@ export default function HeaderPopup(props) {
           <h2 className={`header__logo header__logo_device_phone`}>
             NewsExplorer
           </h2>
-          <img className="modal__close header-modal__close" src={closeButton} />
           <img
             className="modal__close header-modal__close"
             src={closeButton}

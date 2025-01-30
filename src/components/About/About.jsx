@@ -1,5 +1,4 @@
 import "./About.css";
-
 import aboutImg from "../../assets/about-me.jpg";
 
 export default function About(props) {

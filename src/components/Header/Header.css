@@ -151,7 +151,6 @@
 
 .header__phone-content {
   padding: 16px;
-  display: flex;
   display: none;
   justify-content: space-between;
 }
