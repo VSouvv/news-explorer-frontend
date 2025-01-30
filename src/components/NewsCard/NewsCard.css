@@ -8,21 +8,19 @@
 }
 
 .news-card__keyword {
-  background-color: #ffffff;
-  border-radius: 10px;
-  height: 40px;
-  padding: 0 22px;
-  position: absolute;
-  top: 24px;
-  left: 24px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  font-family: "Roboto";
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 14px;
-  line-height: 24px;
-  text-align: center;
-  color: #000000;
+  border-radius: 10px;
+  background-color: #ffff;
+  padding: 8px 22px;
+  margin: 0;
 }
 
 .news-card__save-button {
@@ -46,7 +44,7 @@
   top: 0;
   display: flex;
   align-items: center;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -99,12 +97,13 @@
 }
 
 .news-card__date {
-  font-family: "Inter";
-  font-weight: 400;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  max-width: 161px;
   font-size: 18px;
-  line-height: 24px;
+  margin: 0 0 12px;
+  padding: 0;
   color: #b6bcbf;
-  margin: 0 0 15px;
+  font-weight: 400;
 }
 
 .news-card__title {
@@ -114,7 +113,7 @@
 }
 
 .news-card__title-text {
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
@@ -135,12 +134,13 @@
 }
 
 .news-card__author {
-  font-family: "Roboto Slab";
-  font-weight: 700;
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
   font-size: 16px;
-  line-height: 20px;
+  font-weight: 700;
   color: #b6bcbf;
+  max-width: 100%;
   margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 1030px) {

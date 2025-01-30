@@ -3,6 +3,7 @@
   top: 0px;
   z-index: -1;
   width: 100%;
+  max-width: 100%;
   max-width: 1440px;
   background: url(../../assets/search-background.png) center no-repeat;
   background-size: cover;

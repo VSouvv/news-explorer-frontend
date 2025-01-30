@@ -20,7 +20,7 @@
 }
 
 .about__title {
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
@@ -34,8 +34,11 @@
   margin: 0;
 }
 
-.about__text:first-of-type {
-  margin-bottom: 24px;
+.about__text_first {
+  margin: 24px 0;
+  .about__text:first-of-type {
+    margin-bottom: 24px;
+  }
 }
 
 @media (max-width: 1250px) {
@@ -89,10 +92,12 @@
   .about__content {
     padding: 32px 16px;
     flex-direction: column;
+    align-items: center;
   }
   .about__text-content {
     display: flex;
     flex-direction: column;
+    align-items: center;
     max-width: 600px;
   }
   .about__image {
