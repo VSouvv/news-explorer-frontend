@@ -1,5 +1,5 @@
 import "./About.css";
-import aboutImg from "../../assets/about-me_temp.png";
+
 import aboutImg from "../../assets/about-me.jpg";
 
 export default function About(props) {
@@ -9,7 +9,6 @@ export default function About(props) {
         <img className="about__image" src={aboutImg} alt="Website Author" />
         <div className="about__text-content">
           <h3 className="about__title">About the author</h3>
-          <p className="about__text about__text_first">
           <p className="about__text">
             Hello, my name is Vista. I'm a new software engineer with knowledge
             in HTML, CSS, JavaScript, and React. I've always been intrigued with

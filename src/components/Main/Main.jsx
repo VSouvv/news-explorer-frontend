@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./Main.css";
 import backgroundImg from "../../assets/search-background.png";
 import tabletBackgroundImg from "../../assets/search-background-tablet.png";
