@@ -26,7 +26,7 @@ function App() {
   const [isSearching, setIsSearching] = React.useState(false);
   const [hasSearched, setHasSearched] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({
-    name: "Carver",
+    name: "Vista",
     email: "example-email.com",
     _id: "12345",
   });
