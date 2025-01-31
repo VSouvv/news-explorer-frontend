@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./components/App/App";
 
-createRoot(document.querySelector(".page__content")).render(
+createRoot(document.querySelector("page__content")).render(
   <StrictMode>
     <BrowserRouter>
       <App />
