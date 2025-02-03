@@ -1,34 +1,22 @@
-import React from "react";
-
-import "./SavedNews.css";
-import { cards } from "../../constants/cards";
-
+import NewsCard from "../NewsCard/NewsCard";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
-import NewsCardList from "../NewsCardList/NewsCardList";
-import placeHolderImg from "../../assets/card_placeholder.png";
+import "./SavedNews.css";
 
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-
-export default function SavedNews(props) {
-  const { currentUser } = React.useContext(CurrentUserContext);
-  React.useEffect(() => {
-    props.setCurrentRoute("Saved");
-  }, []);
+function SavedNews({ savedArticles, onRemoveArticle, keywords }) {
   return (
-    <div className=" page__section saved-news">
-      <SavedNewsHeader
-        currentUser={currentUser}
-        savedCards={props.savedCards}
-        setSavedCards={props.setSavedCards}
-      />
-      <section className="saved-news__news-section">
-        <NewsCardList
-          isLoggedIn={props.isLoggedIn}
-          currentRoute={props.currentRoute}
-          cards={props.savedCards}
-          setSavedCards={props.setSavedCards}
-        />
-      </section>
+    <div className="saved">
+      <SavedNewsHeader savedArticles={savedArticles} keywords={keywords} />
+      <ul className="saved__news-list">
+        {savedArticles.map((item) => (
+          <NewsCard
+            key={item.url}
+            item={item}
+            onRemoveArticle={onRemoveArticle}
+          />
+        ))}
+      </ul>
     </div>
   );
 }
+
+export default SavedNews;

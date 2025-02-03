@@ -1,73 +1,54 @@
 import "./Footer.css";
-import gitImg from "../../assets/Git.svg";
-import facebookImg from "../../assets/Facebook.svg";
-
-export default function Footer(props) {
+import { Link } from "react-router-dom";
+import Facebook from "../../assets/facebook.svg";
+import Github from "../../assets/Git.svg";
+function Footer() {
   return (
-    <footer className=" page__section footer">
-      <div className="footer_layout_desktop">
-        <p className="footer__text">© 2024 Supersite, Powered by News API</p>
-        <div className="footer__section">
-          <button
-            className="text-button footer__home"
-            type="button"
-            onClick={props.handleNavigateHome}
-          >
-            Home
-          </button>
-          <a
-            className="text-button footer__tt"
-            href="https://tripleten.com"
-            target="_blank"
-          >
-            TripleTen
-          </a>
-          <a
-            className="footer__git"
-            href="https://github.com/VSouvv/news-explorer-frontend"
-            target="_blank"
-          >
-            <img className="footer__button-img" src={gitImg} alt="git hub" />
-          </a>
-          <a
-            className="footer__facebook"
-            href="https://facebook.com"
-            target="_blank"
-          >
-            <img
-              className="footer__button-img"
-              src={facebookImg}
-              alt="facebook"
-            />
-          </a>
-        </div>
-      </div>
-      <div className="footer_layout_phone">
-        <div className="footer__row">
-          <button className="text-button footer__home" type="button">
-            Home
-          </button>
-          <div className="footer__section">
+    <footer className="footer">
+      <div className="footer__container">
+        <p className="footer__copyright">
+          © 2024 Supersite, Powered by News API
+        </p>
+        <div className="footer__links">
+          <div className="footer__links-container">
+            <Link to="/" className="footer__link footer__link_home">
+              Home
+            </Link>
             <a
-              className="footer__git"
-              href="https://github.com/VSouvv/news-explorer-frontend"
+              href="https://tripleten.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__link footer__link_tripleten"
             >
-              <img className="footer__button-img" src={gitImg} alt="git hub" />
+              TripleTen
             </a>
-            <a className="footer__facebook" href="https://facebook.com">
+          </div>
+          <div className="footer__social">
+            <a
+              href="https://github.com/VSouvv"
+              className="footer__social-link footer__social-link_github"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={Github} alt="Github" className="footer__social-icon" />
+            </a>
+            <a
+              href="https://www.facebook.com/tripleten.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer__social-link footer__social-link_facebook"
+            >
               <img
-                className="footer__button-img"
-                src={facebookImg}
-                alt="facebook"
+                src={Facebook}
+                alt="Facebook"
+                className="footer__social-icon"
               />
             </a>
           </div>
         </div>
-        <button className="text-button footer__tt" type="button">
-          TripleTen
-        </button>
-        <p className="footer__text">© 2024 Supersite, Powered by News API</p>
       </div>
     </footer>
   );
 }
+
+export default Footer;

@@ -1,30 +1,43 @@
-import React from "react";
 import "./Main.css";
-import SearchForm from "../SearchForm/SearchForm";
-import SearchSection from "../SearchSection/SearchSection";
-import About from "../About/About";
+import NewsCardList from "../NewsCardList/NewsCardList";
+import Preloader from "../Preloader/Preloader";
+import NothingFound from "../NothingFound/NothingFound";
 
-export default function Main(props) {
+function Main({
+  articles,
+  onSaveArticle,
+  savedArticles,
+  onRemoveArticle,
+  loading,
+  isLoggedIn,
+  searchTerm,
+  onSignInClick,
+}) {
   return (
-    <main className="page__section main">
-      <div className="main__background-img"></div>
-      <SearchForm
-        onSearch={props.onSearch}
-        hasSearched={props.hasSearched}
-        isSearching={props.isSearching}
-        searchInput={props.searchInput}
-        setSearchInput={props.setSearchInput}
-      />
-      <SearchSection
-        isLoggedIn={props.isLoggedIn}
-        currentRoute={props.currentRoute}
-        cards={props.searchResults}
-        hasSearched={props.hasSearched}
-        isSearching={props.isSearching}
-        displayAmount={props.displayAmount}
-        setDisplayAmount={props.setDisplayAmount}
-      />
-      <About />
+    <main>
+      {loading ? (
+        <Preloader />
+      ) : (
+        <>
+          {searchTerm && articles.length === 0 && <NothingFound />}
+
+          {articles.length > 0 && (
+            <section className="cards">
+              <h2 className="cards__result">Search results</h2>
+              <NewsCardList
+                articles={articles}
+                onSaveArticle={onSaveArticle}
+                savedArticles={savedArticles}
+                onRemoveArticle={onRemoveArticle}
+                isLoggedIn={isLoggedIn}
+                onSignInClick={onSignInClick}
+              />
+            </section>
+          )}
+        </>
+      )}
     </main>
   );
 }
+
+export default Main;

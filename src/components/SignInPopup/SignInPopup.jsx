@@ -1,45 +1,69 @@
-import "./SignInPopup.css";
-import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { useEffect } from "react";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import "../ModalWithForm/ModalWithForm.css";
 
-export default function SignInPopup(props) {
+function SignIn({ isOpen, onClose, onSignUpClick, handleSignIn }) {
+  const { values, handleChange, errors, isValid, resetForm } =
+    useFormAndValidation();
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
+
+  const onSignInSubmit = (e) => {
+    e.preventDefault();
+    if (isValid) {
+      handleSignIn(values);
+    }
+  };
   return (
-    <PopupWithForm
-      activeModal={props.activeModal}
-      modalType="sign-in"
+    <ModalWithForm
+      isOpen={isOpen}
+      onClose={onClose}
+      onLinkClick={onSignUpClick}
       title="Sign in"
-      submitText="Sign in"
-      onSubmit={props.handleSignIn}
-      alternateButton={
-        <p className="modal__form-swap-text">
-          or{" "}
-          <button
-            className="modal__text-button"
-            type="button"
-            onClick={props.swapModal}
-          >
-            Sign up
-          </button>
-        </p>
-      }
+      buttonText="Sign in"
+      showLink={true}
+      linkText="Sign up"
+      isSubmitDisabled={!isValid}
+      onSubmit={onSignInSubmit}
     >
-      <label className="modal__input-label modal__input-label_first">
-        Email
+      <label htmlFor="email-login" className="modal__label modal__label--email">
+        Email{""}
+        <span className="modal__error">{errors.email}</span>
         <input
-          className="modal__form-input"
+          className="modal__input"
+          id="email-login"
+          name="email"
+          placeholder="Enter email"
           type="email"
-          placeholder="Enter Email"
+          value={values.email || ""}
           required
-        ></input>
+          onChange={handleChange}
+        />
       </label>
-      <label className="modal__input-label modal__input-label_last">
-        Password
+      <label
+        htmlFor="password-login"
+        className="modal__label modal__label--password"
+      >
+        Password{""}
+        <span className="modal__error">{errors.password}</span>
         <input
-          className="modal__form-input"
           type="password"
-          placeholder="Enter Password"
+          className="modal__input"
+          id="password-login"
+          name="password"
+          placeholder="Enter password"
+          value={values.password || ""}
           required
-        ></input>
+          onChange={handleChange}
+        />
       </label>
-    </PopupWithForm>
+    </ModalWithForm>
   );
 }
+
+export default SignIn;

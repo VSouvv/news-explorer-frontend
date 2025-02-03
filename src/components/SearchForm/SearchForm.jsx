@@ -1,33 +1,43 @@
-import "./SearchForm.css";
+import { useState } from "react";
 
-export default function SearchForm(props) {
-  const handleSearchInputChange = (evt) => {
-    props.setSearchInput(evt.target.value);
+function SearchForm({ setSearchTerm, onSearch }) {
+  const [input, setInput] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const trimmedInput = input.trim();
+    if (!trimmedInput) {
+      setErrorMessage("Please enter a keyword");
+    } else {
+      setErrorMessage("");
+
+      if (trimmedInput) {
+        setSearchTerm(trimmedInput);
+        onSearch(trimmedInput);
+      }
+    }
   };
-
+  const handleChange = (e) => {
+    setInput(e.target.value);
+    if (errorMessage) {
+      setErrorMessage("");
+    }
+  };
   return (
-    <section className="page__section search-form">
-      <div className="search-form__content">
-        <h1 className="search-form__title">What's going on in the world?</h1>
-        <p className="search-form__description">
-          Find the latest news on any topic and save them in your personal
-          account.
-        </p>
-        <form className="search-form__form" onSubmit={props.onSearch}>
-          <div className="search-form__search-bar">
-            <input
-              type="text"
-              className="search-form__input"
-              placeholder="Enter Topic"
-              value={props.searchInput}
-              onChange={handleSearchInputChange}
-            ></input>
-          </div>
-          <button type="submit" className="search-form__submit">
-            Search
-          </button>
-        </form>
+    <form className="header__search-form" onSubmit={handleSubmit}>
+      <div className="header__search-container">
+        {errorMessage && <p className="header__search-error">{errorMessage}</p>}
+        <input
+          type="text"
+          className="header__search-input"
+          placeholder="Enter topic"
+          value={input}
+          onChange={handleChange}
+        />
+        <button className="header__search-btn">Search</button>
       </div>
-    </section>
+    </form>
   );
 }
+export default SearchForm;

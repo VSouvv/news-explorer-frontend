@@ -1,18 +1,28 @@
-import "./SavedNewsHeader.css";
+function SavedNewsHeader({ savedArticles, keywords = [] }) {
+  const formatKeywords = (keywords) => {
+    const length = keywords.length;
+    if (length === 1) return keywords[0];
+    if (length === 2) return `${keywords[0]}, ${keywords[1]}`;
+    if (length === 3) return `${keywords[0]}, ${keywords[1]}, ${keywords[2]}`;
+    if (length > 2)
+      return `${keywords[0]}, ${keywords[1]}, and ${length - 2} other${
+        length - 2 > 1 ? "s" : ""
+      }`;
+    return "";
+  };
 
-export default function SavedNewsHeader(props) {
   return (
-    <section className=" saved-news-header">
-      <p className="saved-news-header__subtitle">Saved articles</p>
-      <h3 className="saved-news-header__title">
-        {`${props.currentUser.name}, you have 5 saved articles`}
-      </h3>
-      <p className="saved-news-header__keyword-list">
-        {"By keywords: "}
-        <span className="saved-news-header__keywords">
-          {"Nature, Yellowstone, and 2 others"}
-        </span>
+    <div className="saved__header">
+      <p className="saved__header--page">Saved articles</p>
+      <h2 className="saved__header--title">
+        Vista, you have {savedArticles.length} saved articles
+      </h2>
+      <p className="saved__keywords">
+        By keywords:{" "}
+        <span className="saved__keywords-text">{formatKeywords(keywords)}</span>{" "}
       </p>
-    </section>
+    </div>
   );
 }
+
+export default SavedNewsHeader;

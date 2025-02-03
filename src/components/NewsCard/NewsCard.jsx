@@ -1,46 +1,93 @@
-import React from "react";
-import DateCalculator from "../../utils/DateCalculator";
-
 import "./NewsCard.css";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
-export default function NewsCard(props) {
-  const DateCalc = new DateCalculator();
+function NewsCard({
+  item,
+  onSaveArticle,
+  savedArticles = [],
+  onRemoveArticle,
+  isLoggedIn,
+  onSignInClick,
+}) {
+  const isSaved = savedArticles.some((article) => article.url === item.url);
+  const location = useLocation();
+  const onSavedPage = location.pathname === "/saved-news";
+
+  const [showText, setShowText] = useState(false);
+
+  const handleSave = () => {
+    if (!isLoggedIn && !onSavedPage) {
+      onSignInClick();
+      return;
+    }
+    if (onSavedPage) {
+      onRemoveArticle(item);
+    } else {
+      if (!isLoggedIn) {
+        return;
+      }
+      if (!isSaved) {
+        onSaveArticle(item);
+      } else {
+        onRemoveArticle(item);
+      }
+    }
+  };
+
   return (
-    <div className="news-card">
-      <img
-        className="news-card__image"
-        src={props.details.urlToImage}
-        alt={props.details.title}
-      />
-      <div className="news-card__bottom">
-        <p className="news-card__date">
-          {DateCalc.convertDateToReadable(props.details.publishedAt)}
-        </p>
-        <div className="news-card__title">
-          <h4 className="news-card__title-text">{props.details.title}</h4>
+    <li className="card">
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="card__link"
+      >
+        <img src={item.urlToImage} alt={item.title} className="card__image" />
+        <div className="card__info">
+          <p className="card__published">{item.publishedAt.split("T")[0]}</p>
+          <h2 className="card__title">{item.title}</h2>
+          <p className="card__description">{item.description}</p>
+          <p className="card__source">{item.source.name}</p>
         </div>
-        <div className="news-card__body">
-          <p className="news-card__body-text">{props.details.description}</p>
-        </div>
-        <p className="news-card__author">{props.details.source.name}</p>
-      </div>
-      {props.currentRoute === "Saved" ? (
-        <>
-          <button
-            className="news-card__save-button news-card__save-button_unsave"
-            type="button"
-          >
-            <div className="news-card__save-button-info">Remove from saved</div>
-          </button>
-          <div className="news-card__keyword">{props.details.keyword}</div>
-        </>
-      ) : (
-        <button className="news-card__save-button" type="button">
-          <div className="news-card__save-button-info">
-            {props.isLoggedIn ? "Save article" : "Sign in to save articles"}
-          </div>
-        </button>
+      </a>
+      {onSavedPage && item.keyword && (
+        <p className="card__keyword">{item.keyword}</p>
       )}
-    </div>
+      <button
+        className={`card__button ${
+          onSavedPage
+            ? "card__button--remove"
+            : isSaved
+            ? "card__button--saved"
+            : "card__button--unsaved"
+        }`}
+        onClick={handleSave}
+        onMouseEnter={() => setShowText(true)}
+        onMouseLeave={() => setShowText(false)}
+      >
+        {" "}
+        {onSavedPage && (
+          <span
+            className={`card__button-text ${
+              showText ? "" : "card__button-text--hidden"
+            }`}
+          >
+            Remove from saved
+          </span>
+        )}
+        {!isLoggedIn && !onSavedPage && (
+          <span
+            className={`card__button-text ${
+              showText ? "" : "card__button-text--hidden"
+            }`}
+          >
+            Sign in to save articles
+          </span>
+        )}
+      </button>
+    </li>
   );
 }
+
+export default NewsCard;

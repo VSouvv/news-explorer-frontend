@@ -1,16 +1,21 @@
-import "./SignUpSuccessPopup.css";
-import Popup from "../Popup/Popup";
+import "./SignupSuccessPopup.css";
 
-export default function SignUpSuccessPopup(props) {
+function SignupSuccessPopup(onSignInClick, onClose) {
   return (
-    <Popup
-      modalType="signup-success"
-      title="Registration successfully completed!"
-      activeModal={props.activeModal}
-    >
-      <button className="modal__text-button signup-success__signin-button">
-        Sign in
-      </button>
-    </Popup>
+    <div className="success-popup">
+      <div className="success-popup__container">
+        <button className="success-popup__close-btn" onClick={onClose}></button>
+        <div className="success-popup__content">
+          <h2 className="success-popup__message">
+            Registration successfully completed!
+          </h2>
+          <span className="success-popup__link" onClick={onSignInClick}>
+            Sign in
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
+
+export default SignupSuccessPopup;

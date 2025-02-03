@@ -1,53 +1,84 @@
-import "./SignUpPopup.css";
-import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { useEffect } from "react";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import "../ModalWithForm/ModalWithForm.css";
 
-export default function SignUpPopup(props) {
+function SignUp({ isOpen, onClose, onSignInClick }) {
+  const { values, handleChange, errors, resetForm } = useFormAndValidation();
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
+  const onSingUpSubmit = (evt) => {
+    evt.preventDefault();
+  };
+
   return (
-    <PopupWithForm
-      activeModal={props.activeModal}
-      modalType="sign-up"
+    <ModalWithForm
+      isOpen={isOpen}
+      onClose={onClose}
+      onLinkClick={onSignInClick}
       title="Sign up"
-      submitText="Sign up"
-      alternateButton={
-        <p className="modal__form-swap-text">
-          or{" "}
-          <button
-            className="modal__text-button"
-            type="button"
-            onClick={props.swapModal}
-          >
-            Sign in
-          </button>
-        </p>
-      }
+      buttonText="Sign up"
+      showLink={true}
+      linkText="Sign in"
+      onSubmit={onSingUpSubmit}
     >
-      <label className="modal__input-label modal__input-label_first">
-        Email
+      <label
+        htmlFor="email-singup"
+        className="modal__label modal__label--email"
+      >
+        Email {""}
+        <span className="modal__error">{errors.email}</span>
         <input
-          className="modal__form-input"
           type="email"
-          placeholder="Enter Email"
+          className="modal__input"
+          id="email-singup"
+          name="email"
+          placeholder="Enter email"
           required
-        ></input>
+          value={values.email || ""}
+          onChange={handleChange}
+        />
       </label>
-      <label className="modal__input-label">
-        Password
+      <label
+        htmlFor="password-singup"
+        className="modal__label modal__label--password"
+      >
+        Password {""}
+        <span className="modal__error">{errors.password}</span>
         <input
-          className="modal__form-input"
           type="password"
-          placeholder="Enter Password"
+          className="modal__input"
+          id="password-singup"
+          name="password"
+          placeholder="Enter password"
           required
-        ></input>
+          value={values.password || ""}
+          onChange={handleChange}
+        />
       </label>
-      <label className="modal__input-label modal__input-label_last">
-        Username
+      <label
+        htmlFor="username-singup"
+        className="modal__label modal__label--username"
+      >
+        Username {""}
+        <span className="modal__error">{errors.username}</span>
         <input
-          className="modal__form-input"
           type="text"
-          placeholder="Enter your username"
+          className="modal__input"
+          id="username-singup"
+          name="username"
+          placeholder="Enter username"
           required
-        ></input>
+          value={values.username || ""}
+          onChange={handleChange}
+        />
       </label>
-    </PopupWithForm>
+    </ModalWithForm>
   );
 }
+
+export default SignUp;
