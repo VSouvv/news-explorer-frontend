@@ -62,7 +62,7 @@
   background-image: url("../../assets/savedIcon.svg");
 }
 .card__button--remove {
-  background-image: url("../../assets/trash.svg");
+  background-image: url("../../asssets/trassh.svg");
 }
 .card__button--remove:hover {
   background-image: url("../../assets/trashHover.svg");
@@ -71,20 +71,21 @@
   background-image: url("../../assets/saveIconHover.svg");
 }
 .card__info {
-  margin: 20px 24px 24px;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  text-decoration: none;
+  color: inherit;
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  background: white;
 }
 .card__published {
-  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
-  max-width: 161px;
   font-size: 18px;
-  margin: 0 0 12px;
-  padding: 0;
+  line-height: 24px;
   color: #b6bcbf;
+  font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
+  margin: 20px 0 12px 24px;
 }
 .card__title {
   font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
@@ -198,7 +199,8 @@
     height: 196px;
   }
   .card__published {
-    margin: 0 0 10px;
+    padding: 0;
+    margin: 16px 0 0 16px;
   }
   .card__title {
     padding-bottom: 3px;

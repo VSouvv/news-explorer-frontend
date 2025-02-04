@@ -33,7 +33,10 @@ function NewsCardList({
       </ul>
       {cardsShown < articles.length && (
         <div className="cards__show-more-container">
-          <button className="cards__show-more-button" onClick={handleShowMore}>
+          <button
+            className="news-card-list__show-more-button"
+            onClick={handleShowMore}
+          >
             Show more
           </button>
         </div>

@@ -19,7 +19,9 @@ function SavedNewsHeader({ savedArticles, keywords = [] }) {
       </h2>
       <p className="saved__keywords">
         By keywords:{" "}
-        <span className="saved__keywords-text">{formatKeywords(keywords)}</span>{" "}
+        <span className="saved__keywords--text">
+          {formatKeywords(keywords)}
+        </span>{" "}
       </p>
     </div>
   );
