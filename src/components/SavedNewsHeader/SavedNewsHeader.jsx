@@ -13,7 +13,7 @@ function SavedNewsHeader({ savedArticles, keywords = [] }) {
 
   return (
     <div className="saved__header">
-      <p className="saved__header--page">Saved articles</p>
+      <h1 className="saved__header--page">Saved articles</h1>
       <h2 className="saved__header--title">
         Vista, you have {savedArticles.length} saved articles
       </h2>

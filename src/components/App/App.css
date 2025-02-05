@@ -1,6 +1,8 @@
 .app {
-  background-color: #f3f3f3;
-  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 .app__content {
   max-width: 1440px;
@@ -11,8 +13,8 @@
 }
 .app__search {
   position: relative;
-  z-index: 1;
 }
+
 .app__search--with-bg {
   background-image: url("../../assets/background.png");
   background-size: cover;
