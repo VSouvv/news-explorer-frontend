@@ -23,7 +23,7 @@
   position: relative;
 }
 .success-popup__close-btn {
-  background: transparent url(../../images/closeIcon.svg);
+  background: transparent url(../../assets/closeIcon.svg);
   position: absolute;
   top: -44px;
   right: -44px;
