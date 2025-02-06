@@ -55,11 +55,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 400px);
   gap: 16px;
-  margin: 0;
+  margin: 0 auto; /* Centering the list */
   padding: 118px 24px 62px;
   list-style-type: none;
   max-width: 1280px;
-  align-self: center;
+  justify-content: center; /* ✅ Center items in the grid */
 }
 
 @media screen and (max-width: 1280px) {
@@ -76,10 +76,11 @@
     padding: 24px 16px 32px;
   }
   .saved__news-list {
-    grid-template-columns: repeat(auto-fit, 224px);
+    grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
     gap: 8px;
     padding: 32px 16px;
     max-width: 720px;
+    justify-content: center;
   }
   .saved__header--page {
     font-size: 14px;

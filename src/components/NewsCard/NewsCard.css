@@ -65,7 +65,7 @@
   background-image: url("../../assets/savedIcon.svg");
 }
 .card__button--remove {
-  background-image: url("../../asssets/trassh.svg");
+  background-image: url("../../asssets/trash.svg");
 }
 .card__button--remove:hover {
   background-image: url("../../assets/trashHover.svg");
@@ -136,7 +136,7 @@
   bottom: 0;
 }
 .card__button-text {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   height: 40px;

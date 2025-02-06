@@ -13,7 +13,6 @@ function NewsCard({
   const isSaved = savedArticles.some((article) => article.url === item.url);
   const location = useLocation();
   const onSavedPage = location.pathname === "/saved-news";
-
   const [showText, setShowText] = useState(false);
 
   const handleSave = () => {
@@ -24,14 +23,8 @@ function NewsCard({
     if (onSavedPage) {
       onRemoveArticle(item);
     } else {
-      if (!isLoggedIn) {
-        return;
-      }
-      if (!isSaved) {
-        onSaveArticle(item);
-      } else {
-        onRemoveArticle(item);
-      }
+      if (!isLoggedIn) return;
+      isSaved ? onRemoveArticle(item) : onSaveArticle(item);
     }
   };
 
@@ -55,32 +48,23 @@ function NewsCard({
         <p className="card__keyword">{item.keyword}</p>
       )}
       <button
-        className={`card__button ${
-          onSavedPage
-            ? "card__button--remove"
-            : isSaved
-            ? "card__button--saved"
-            : "card__button--unsaved"
+        className={`card__button card__button--${
+          onSavedPage ? "remove" : isSaved ? "saved" : "unsaved"
         }`}
         onClick={handleSave}
         onMouseEnter={() => setShowText(true)}
         onMouseLeave={() => setShowText(false)}
       >
-        {" "}
         {onSavedPage && (
-          <span
-            className={`card__button-text ${
-              showText ? "" : "card__button-text--hidden"
-            }`}
+          <null
+            className={`card__button-text ${showText ? "visible" : "hidden"}`}
           >
             Remove from saved
-          </span>
+          </null>
         )}
         {!isLoggedIn && !onSavedPage && (
           <span
-            className={`card__button-text ${
-              showText ? "" : "card__button-text--hidden"
-            }`}
+            className={`card__button-text ${showText ? "visible" : "hidden"}`}
           >
             Sign in to save articles
           </span>

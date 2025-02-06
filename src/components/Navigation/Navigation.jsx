@@ -18,12 +18,8 @@ function Nav({ handleSignInClick, isLoggedIn, onLogOut, activeModal }) {
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    if (isHomePage) {
-      setActiveItem("home");
-    } else if (isSavedNewsPage) {
-      setActiveItem("saved");
-    }
-  }, [location.pathname, isHomePage, isSavedNewsPage]);
+    setActiveItem(isHomePage ? "home" : isSavedNewsPage ? "saved" : "");
+  }, [location.pathname]);
 
   const handleSignInAndCloseMenu = () => {
     setIsMenuOpen(false);
@@ -34,13 +30,15 @@ function Nav({ handleSignInClick, isLoggedIn, onLogOut, activeModal }) {
     <nav className="nav">
       <div
         className={`nav__container ${
-          activeItem === "saved" ? "nav__container--black-text" : ""
+          activeItem === "saved"
+            ? "nav__container--theme-black nav__container--black-text"
+            : "nav__container--theme-white"
         }`}
       >
         <ul className="nav__list">
           <li
             className={`nav__item nav__item--logo ${
-              activeModal ? "nav__hide-mobile" : ""
+              activeModal ? "nav__item--hidden" : ""
             }`}
           >
             <Link to="/" className="nav__link">
@@ -50,7 +48,7 @@ function Nav({ handleSignInClick, isLoggedIn, onLogOut, activeModal }) {
 
           <li
             className={`nav__item nav__item--home ${
-              isSavedNewsPage ? "nav__item--home-hover" : ""
+              isSavedNewsPage ? "nav__item--hover" : ""
             }`}
           >
             <Link
@@ -66,7 +64,7 @@ function Nav({ handleSignInClick, isLoggedIn, onLogOut, activeModal }) {
             <>
               <li
                 className={`nav__item nav__item--saved ${
-                  isHomePage ? "nav__item--saved-hover" : ""
+                  isHomePage ? "nav__item--hover" : ""
                 }`}
               >
                 <Link
@@ -79,25 +77,24 @@ function Nav({ handleSignInClick, isLoggedIn, onLogOut, activeModal }) {
                 </Link>
               </li>
               <li className="nav__item nav__item--logout">
-                <button className="nav__logout">
+                <button className="nav__logout" onClick={onLogOut}>
                   <span className="nav__user-name">
                     {currentUser?.name}Vista
                   </span>
                   <img
                     src={
-                      activeItem == "saved"
+                      activeItem === "saved"
                         ? SaveNewsLogoutIcon
                         : HomeLogoutIcon
                     }
                     alt="logout icon"
                     className="nav__logout-icon"
-                    onClick={onLogOut}
                   />
                 </button>
               </li>
             </>
           ) : (
-            <li className="nav__auth">
+            <li className="nav__item nav__item--auth">
               <button
                 className="nav__signin"
                 onClick={handleSignInAndCloseMenu}
@@ -108,8 +105,8 @@ function Nav({ handleSignInClick, isLoggedIn, onLogOut, activeModal }) {
           )}
 
           <li
-            className={`nav__item nav__item--menu-icon ${
-              activeModal ? "nav__hide-mobile" : ""
+            className={`nav__item nav__item--menu ${
+              activeModal ? "nav__item--hidden" : ""
             }`}
           >
             <button
@@ -118,7 +115,7 @@ function Nav({ handleSignInClick, isLoggedIn, onLogOut, activeModal }) {
               aria-label="Toggle menu"
             >
               <img
-                src={activeItem == "saved" ? SmenuIcon : HmenuIcon}
+                src={activeItem === "saved" ? SmenuIcon : HmenuIcon}
                 alt="menu icon"
                 className="nav__menu-icon"
               />

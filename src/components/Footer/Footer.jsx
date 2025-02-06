@@ -14,7 +14,7 @@ const Footer = () => {
       <nav className="footer__nav">
         <ul className="footer__link-list">
           <li className="footer__link">
-            <Link to="/" className="footer__button footer__button--home">
+            <Link to="/" className="footer__button footer__button--type-home">
               Home
             </Link>
           </li>
@@ -22,7 +22,7 @@ const Footer = () => {
             <a
               href="https://tripleten.com/"
               target="_blank"
-              className="footer__button footer__button--tripleten"
+              className="footer__button footer__button--type-tripleten"
             >
               TripleTen
             </a>
@@ -38,7 +38,7 @@ const Footer = () => {
               <img
                 src={GitHubIcon}
                 alt="GitHub"
-                className="footer__icon-image"
+                className="footer__icon-image footer__icon-image--type-github"
               />
             </a>
           </li>
@@ -51,7 +51,7 @@ const Footer = () => {
               <img
                 src={FacebookIcon}
                 alt="Facebook"
-                className="footer__icon-image"
+                className="footer__icon-image footer__icon-image--type-facebook"
               />
             </a>
           </li>
