@@ -11,3 +11,15 @@ export const checkToken = (token) => {
     });
   });
 };
+
+export const register = (email, password, username) => {
+  return new Promise((resolve, reject) => {
+    resolve({
+      user: {
+        name: username,
+        email: email,
+        id: "fake-user-id",
+      },
+    });
+  });
+};

@@ -3,7 +3,7 @@ import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "../ModalWithForm/ModalWithForm.css";
 
-function SignUp({ isOpen, onClose, onSignInClick }) {
+function SignUpPopup({ isOpen, onClose, onSignInClick, onSignUp }) {
   const { values, handleChange, errors, resetForm } = useFormAndValidation();
 
   useEffect(() => {
@@ -11,8 +11,10 @@ function SignUp({ isOpen, onClose, onSignInClick }) {
       resetForm();
     }
   }, [isOpen, resetForm]);
-  const onSingUpSubmit = (evt) => {
+
+  const handleSignUpSubmit = (evt) => {
     evt.preventDefault();
+    onSignUp(values);
   };
 
   return (
@@ -24,18 +26,17 @@ function SignUp({ isOpen, onClose, onSignInClick }) {
       buttonText="Sign up"
       showLink={true}
       linkText="Sign in"
-      onSubmit={onSingUpSubmit}
+      onSubmit={handleSignUpSubmit}
     >
       <label
-        htmlFor="email-singup"
+        htmlFor="email-signup"
         className="modal__label modal__label--email"
       >
-        Email {""}
-        <span className="modal__error">{errors.email}</span>
+        Email <span className="modal__error">{errors.email}</span>
         <input
           type="email"
           className="modal__input"
-          id="email-singup"
+          id="email-signup"
           name="email"
           placeholder="Enter email"
           required
@@ -43,16 +44,16 @@ function SignUp({ isOpen, onClose, onSignInClick }) {
           onChange={handleChange}
         />
       </label>
+
       <label
-        htmlFor="password-singup"
+        htmlFor="password-signup"
         className="modal__label modal__label--password"
       >
-        Password {""}
-        <span className="modal__error">{errors.password}</span>
+        Password <span className="modal__error">{errors.password}</span>
         <input
           type="password"
           className="modal__input"
-          id="password-singup"
+          id="password-signup"
           name="password"
           placeholder="Enter password"
           required
@@ -60,16 +61,16 @@ function SignUp({ isOpen, onClose, onSignInClick }) {
           onChange={handleChange}
         />
       </label>
+
       <label
-        htmlFor="username-singup"
+        htmlFor="username-signup"
         className="modal__label modal__label--username"
       >
-        Username {""}
-        <span className="modal__error">{errors.username}</span>
+        Username <span className="modal__error">{errors.username}</span>
         <input
           type="text"
           className="modal__input"
-          id="username-singup"
+          id="username-signup"
           name="username"
           placeholder="Enter username"
           required
@@ -81,4 +82,4 @@ function SignUp({ isOpen, onClose, onSignInClick }) {
   );
 }
 
-export default SignUp;
+export default SignUpPopup;

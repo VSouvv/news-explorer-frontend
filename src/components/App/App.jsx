@@ -6,13 +6,12 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
-import { fetchNews } from "../../utils/newsApi";
+import { fetchNews, saveArticle } from "../../utils/newsApi";
 import SavedNews from "../SavedNews/SavedNews";
 import SignIn from "../SignInPopup/SignInPopup";
-import { saveArticle } from "../../utils/newsApi";
+import SignUpPopup from "../SignUpPopup/SignUpPopup";
 import * as auth from "../../utils/auth";
 import { setToken } from "../../utils/token";
-import SignUp from "../SignUpPopup/SignUpPopup";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
@@ -29,17 +28,22 @@ function App() {
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
 
+  // Opens Sign In modal
   const handleSignInClick = () => {
     setActiveModal("signin");
   };
 
+  // Opens Sign Up modal
   const handleSignUpClick = () => {
     setActiveModal("signup");
   };
+
+  // Closes any active modal
   const closeActiveModal = () => {
     setActiveModal(null);
   };
 
+  // Handles user sign-in
   const handleSignIn = async ({ email, password }) => {
     setLoading(true);
     if (!email || !password) {
@@ -50,54 +54,59 @@ function App() {
       const data = await auth.authorize(email, password);
       setToken(data.token);
       setIsLoggedIn(true);
-
-      // const user = await auth.checkToken(data.token);
-      // setCurrentUser(user);
       closeActiveModal();
       navigate("/saved-news");
     } catch (error) {
       console.error("Login failed", error);
-      setLoading(false);
       throw error;
     } finally {
       setLoading(false);
     }
   };
 
-  // set up Sign Up logic -TODO
+  // Handles user sign-up
+  const handleSignUp = async ({ email, password, username }) => {
+    setLoading(true);
+    try {
+      const userData = await auth.register(email, password, username);
+      if (userData) {
+        handleSignIn({ email, password }); // Auto-login after sign-up
+      }
+    } catch (error) {
+      console.error("Signup failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // Logs user out
   const handleLogOut = () => {
     setIsLoggedIn(false);
     setCurrentUser(null);
     navigate("/");
   };
 
+  // Handles article search
   const handleSearch = async (keyword) => {
     setLoading(true);
-    setSearchTerm(keyword); // set the search term to current keyword which is empty "" if user type "space" it will be "space"
-    localStorage.setItem("lastSearchTerm", keyword); // this will save the keyword "space" in localstorage
+    setSearchTerm(keyword);
+    localStorage.setItem("lastSearchTerm", keyword);
 
     try {
-      const fetchArticles = await fetchNews(keyword); // fetch articles from the api using the keyword search
-      console.log(fetchArticles);
-
-      if (fetchArticles.length == 0) {
+      const fetchArticles = await fetchNews(keyword);
+      if (fetchArticles.length === 0) {
         setArticles([]);
-        localStorage.setItem("lastSearchAritcles", JSON.stringify([]));
+        localStorage.setItem("lastSearchArticles", JSON.stringify([]));
       } else {
         const articlesWithKeyword = fetchArticles.map((article) => ({
-          ...article, // this will copied the articles array that fetched from api to fetchArticles array and will add the keyword: "" property to the copied array by using map().
-          keyword, // keyword property
+          ...article,
+          keyword,
         }));
-        setArticles(articlesWithKeyword); // it updates the state of the newly copied articles that have keyword property.
+        setArticles(articlesWithKeyword);
         localStorage.setItem(
           "lastSearchArticles",
           JSON.stringify(articlesWithKeyword)
         );
-
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
       }
     } catch (err) {
       console.error(err);
@@ -106,10 +115,10 @@ function App() {
     }
   };
 
+  // Saves an article
   const saveArticles = async (article) => {
     try {
       const savedArticle = await saveArticle(article);
-      console.log(savedArticle);
       const updatedSavedArticles = [...savedArticles, savedArticle];
       setSavedArticles(updatedSavedArticles);
       localStorage.setItem(
@@ -118,7 +127,6 @@ function App() {
       );
 
       const relatedKeyword = savedArticle.keyword;
-      // check if the keyword already in the array if not then add
       if (!keywords.includes(relatedKeyword)) {
         const updatedKeywords = [...keywords, relatedKeyword];
         setKeywords(updatedKeywords);
@@ -132,22 +140,18 @@ function App() {
     }
   };
 
-  // check for URL to remove
+  // Removes an article
   const removeArticle = (article) => {
     const updatedSavedArticles = savedArticles.filter(
       (a) => a.url !== article.url
     );
     setSavedArticles(updatedSavedArticles);
-
     localStorage.setItem("savedArticles", JSON.stringify(updatedSavedArticles));
 
-    // check if any other saved articels share the same keyword with the removed one and do not remove them
     const relatedKeyword = article.keyword;
     const remainingArticlesWithKeyword = updatedSavedArticles.filter(
       (a) => a.keyword === relatedKeyword
     );
-
-    // this will remove the keyword if there's no other card who share the keyword
     if (remainingArticlesWithKeyword.length === 0) {
       const remainingKeywords = keywords.filter((kw) => kw !== relatedKeyword);
       setKeywords(remainingKeywords);
@@ -158,31 +162,27 @@ function App() {
     }
   };
 
-  // USE EFFECT
-
+  // Restores last search from localStorage
   useEffect(() => {
     const lastSearchTerm = localStorage.getItem("lastSearchTerm");
-    const storedArticles = JSON.parse(
-      localStorage.getItem("lastSearchArticles")
-    );
+    const storedArticles =
+      JSON.parse(localStorage.getItem("lastSearchArticles")) || [];
 
     if (lastSearchTerm && isHomePage && !searchTerm) {
-      setSearchTerm(lastSearchTerm); //set search term if previously searched
-      setArticles(storedArticles || []);
-      setLoading(false);
+      setSearchTerm(lastSearchTerm);
+      setArticles(storedArticles);
     } else if (!isHomePage) {
       setSearchTerm("");
       setArticles([]);
-      setLoading(false);
     }
   }, [isHomePage, searchTerm]);
 
+  // Restores saved articles and keywords
   useEffect(() => {
     const storedKeywords =
       JSON.parse(localStorage.getItem("searchedKeywords")) || [];
     const storedArticles =
       JSON.parse(localStorage.getItem("savedArticles")) || [];
-
     setKeywords(storedKeywords);
     setSavedArticles(storedArticles);
   }, []);
@@ -244,10 +244,11 @@ function App() {
           onSignUpClick={handleSignUpClick}
           handleSignIn={handleSignIn}
         />
-        <SignUp
+        <SignUpPopup
           isOpen={activeModal === "signup"}
           onClose={closeActiveModal}
           onSignInClick={handleSignInClick}
+          onSignUp={handleSignUp}
         />
       </div>
     </CurrentUserContext.Provider>
