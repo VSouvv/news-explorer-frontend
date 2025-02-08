@@ -1,101 +1,96 @@
 .about {
   display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
+  max-width: 1440px;
+  background: white;
 }
+
 .about__container {
+  max-width: 1440px;
   display: flex;
-  margin: 80px 24px;
-  max-width: 1280px;
-  box-sizing: border-box;
-  width: 100%;
 }
-.about__author-profile {
+
+.about__image {
   width: 464px;
-  height: 464px;
-  border-radius: 50%;
-  object-fit: cover;
-  padding: 0;
-  margin: 0;
+  height: auto;
+  border-radius: 1000px;
+  margin: 80px 56px 80px 104px;
 }
-.about__author-info {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 51px 0 0 56px;
-  gap: 24px;
+
+.about__text {
+  max-width: 600px;
 }
-.about__author-title {
-  font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+
+.about__author {
+  font-family: "Roboto-Slab", Arial, sans-serif;
   font-weight: 400;
   font-size: 40px;
-  max-width: 100%;
-  color: #1a1b22;
-  margin: 0;
-  padding: 0;
   line-height: 46px;
-  color: #1a1b22;
+  margin-top: 131px;
+  margin-bottom: 0;
 }
 
-.about__author-caption {
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+.about__description {
+  font-family: "Roboto", Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
   line-height: 24px;
-  color: #1a1b22;
+  margin: 24px auto 0;
 }
 
-@media screen and (max-width: 863px) {
-  .about__container {
-    margin: 40px 16px 61px;
-    max-width: 720px;
+@media screen and (min-width: 571px) and (max-width: 768px) {
+  .about {
+    margin-top: 0;
   }
-  .about__author-profile {
+
+  .about__image {
     width: 232px;
     height: 232px;
+    border-radius: 1000px;
+    margin: 61px 32px 61px 40px;
+  }
 
-    padding-top: 21px;
+  .about__text {
+    max-width: 424px;
   }
-  .about__author-info {
-    margin: 0;
-    padding: 0 0 0 32px;
-    gap: 16px;
-  }
-  .about__author-title {
-    font-size: 36px;
+
+  .about__author {
+    font-size: 30px;
     line-height: 40px;
+    margin-top: 40px;
+  }
+
+  .about__description {
+    margin: 16px auto 0;
   }
 }
-@media screen and (max-width: 630px) {
-  .about {
-    display: flex;
-    justify-content: center;
-  }
-  .about__container {
-    flex-direction: column;
-    margin: 0;
-    padding: 0 16px 128px;
-    max-width: 320px;
-    align-items: center;
-  }
-  .about__author-profile {
+
+@media screen and (min-width: 320px) and (max-width: 570px) {
+  .about__image {
     width: 272px;
     height: 272px;
-    padding-top: 32px;
+    margin: 32px auto 24px;
   }
-  .about__author--info {
-    padding: 24px 0 0;
-    max-width: 288px;
-    gap: 16px;
+
+  .about__container {
+    flex-direction: column;
+    align-items: center;
   }
-  .about__author-caption {
-    margin-bottom: 16px;
+
+  .about__text {
+    margin-left: 16px;
+    margin-right: 16px;
   }
-  .about__author-caption:last-child {
-    margin-bottom: 0;
+
+  .about__author {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 0;
+  }
+
+  .about__description {
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 16px;
+    margin-bottom: 20px;
   }
 }

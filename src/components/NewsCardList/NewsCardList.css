@@ -4,6 +4,11 @@
   display: flex;
 }
 
+/* .news-card-list--saved {
+  margin-top: 62px;
+  margin-bottom: 62px;
+} */
+
 .news-card-list--main {
   flex-wrap: wrap;
 }

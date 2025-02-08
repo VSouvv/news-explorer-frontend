@@ -11,12 +11,7 @@
   box-sizing: border-box;
   position: relative;
 }
-.card__link {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-}
+
 .card__image {
   width: 400px;
   height: 272px;
@@ -24,56 +19,8 @@
   border-top-right-radius: 16px;
   object-fit: cover;
 }
-.card__keyword {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  left: 24px;
-  top: 24px;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  border-radius: 10px;
-  background-color: #ffff;
-  padding: 8px 22px;
-  margin: 0;
-}
 
-.card__button {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  border: none;
-  color: #ffff;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  background-size: 24px 24px;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: background-image 0.5s ease-in-out;
-  display: flex;
-}
-.card__button--unsaved {
-  background-image: url("../../assets/noSaveIcon.svg");
-}
-.card__button--saved {
-  background-image: url("../../assets/savedIcon.svg");
-}
-.card__button--remove {
-  background-image: url("../../asssets/trash.svg");
-}
-.card__button--remove:hover {
-  background-image: url("../../assets/trashHover.svg");
-}
-.card__button--unsaved:hover {
-  background-image: url("../../assets/saveIconHover.svg");
-}
-.card__info {
+.card__text-container {
   display: flex;
   flex-direction: column;
   max-width: 400px;
@@ -84,7 +31,8 @@
   overflow: hidden;
   height: 100%;
 }
-.card__published {
+
+.card__date {
   font-size: 18px;
   line-height: 24px;
   color: #b6bcbf;
@@ -92,6 +40,7 @@
   font-weight: 400;
   margin: 20px 0 12px 24px;
 }
+
 .card__title {
   font-family: "Roboto-Slab", Arial, sans-serif;
   font-weight: 400;
@@ -106,6 +55,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .card__description {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 400;
@@ -120,6 +70,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .card__source {
   font-family: "Roboto-Slab", Arial, sans-serif;
   font-weight: 700;
@@ -135,50 +86,136 @@
   position: absolute;
   bottom: 0;
 }
-.card__button-text {
-  display: none;
-  justify-content: center;
+
+.card__bookmark-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  width: 40px;
   height: 40px;
-  background-color: #ffff;
-  box-shadow: 0px 10px 22px 0px #3b4a741a;
-  box-sizing: border-box;
-  color: #1a1b22;
-  z-index: 999;
+  background-image: url("../../images/bookmark.svg");
+}
+.card__bookmark-container_active {
+  background-image: url("../../images/bookmarkmarked.svg");
+}
+
+.card__bookmark-button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.card__remove-button {
+  display: inline-block;
+  background: url("../../images/remove_icon_inactive.svg") no-repeat center;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.card__remove-button:hover {
+  background: url("../../images/remove_icon_active.svg") no-repeat center;
+}
+
+.card__remove-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.card__keyword {
+  display: inline-block;
+  margin-left: 24px;
+  margin-top: 24px;
+  background-color: white;
+  color: black;
+  padding: 8px 22px;
   border-radius: 10px;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  white-space: nowrap;
+  text-align: center;
+  position: absolute;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.card__bookmark-tip {
+  position: absolute;
+
+  top: 0;
+  right: 45px;
+
+  white-space: nowrap;
+  z-index: 1;
+  font-family: "Roboto", Arial, sans-serif;
   font-weight: 500;
   font-size: 12px;
-  transition: opacity 0.5s linear 0s;
-  margin: 0;
-  padding: 11px 26px;
-  white-space: nowrap;
-  position: absolute;
-  right: 45px;
+  line-height: 14.06px;
+  color: #000000;
+  background-color: white;
+  width: 182px;
+  height: 40px;
+  text-align: center;
+  padding: 0;
+  border-radius: 10px;
+  align-content: center;
 }
-.card__button-text--hidden {
-  opacity: 0;
+
+.card__remove-tip {
+  position: absolute;
+  top: 0;
+  right: 45px;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  z-index: 1;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.06px;
+  color: #000000;
+  background-color: white;
+  width: 182px;
+  height: 40px;
+  text-align: center;
+  padding: 0;
+  border-radius: 10px;
+  align-content: center;
 }
 
 @media screen and (min-width: 571px) and (max-width: 768px) {
   .card {
-    width: 224px;
     height: 420px;
-  }
-  .card__image {
-    height: 150px;
-    width: 224px;
-  }
-  .card__button {
-    top: 8px;
-    right: 8px;
-  }
-  .card__button-text {
-    padding: 6px 14px;
-  }
-  .card__info {
     max-width: 224px;
   }
+  .card__image {
+    width: 224px;
+    height: 150px;
+  }
+
+  .card__text-container {
+    max-width: 224px;
+  }
+
+  .card__date {
+    padding: 0;
+    margin: 16px 0 0 16px;
+  }
+
   .card__title {
     font-size: 22px;
     line-height: 24px;
@@ -188,16 +225,12 @@
     overflow: hidden;
     -webkit-line-clamp: 2;
   }
+
   .card__description {
     max-width: 192px;
     -webkit-line-clamp: 3;
     margin: 0 16px 12px 16px;
     padding: 0;
-  }
-
-  .card__published {
-    padding: 0;
-    margin: 16px 0 0 16px;
   }
 
   .card__source {
@@ -206,36 +239,56 @@
     width: 192px;
   }
 
-  .card__keyword {
-    padding: 8px 20px;
-    left: 8px;
+  .card__bookmark-container {
     top: 8px;
+    right: 8px;
+  }
+
+  .card__bookmark-tip {
+    width: 150px;
+    height: 40px;
+  }
+
+  .card__keyword {
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+
+  .card__remove-container {
+    padding-top: 8px;
+    top: 0;
+    padding-right: 8px;
+    right: 0;
   }
 }
+
 @media screen and (min-width: 320px) and (max-width: 570px) {
   .card {
-    width: 288px;
     height: 440px;
+    max-width: 288px;
   }
+
   .card__image {
     width: 288px;
     height: 196px;
   }
 
-  .card__info {
+  .card__text-container {
     max-width: 288px;
   }
 
-  .card__published {
+  .card__date {
     padding: 0;
     margin: 16px 16px 10px 16px;
   }
+
   .card__title {
     max-width: 256px;
     margin: 0 16px 14px 16px;
     padding: 0;
     -webkit-line-clamp: 2;
   }
+
   .card__description {
     max-width: 256px;
     -webkit-line-clamp: 3;
@@ -251,5 +304,20 @@
     letter-spacing: 0.4px;
     color: #b6bcbf;
     margin: 0 16px 16px 16px;
+  }
+
+  .card__bookmark-container {
+    top: 16px;
+    right: 16px;
+  }
+
+  .card__keyword {
+    margin-top: 16px;
+    margin-left: 16px;
+  }
+
+  .card__remove-container {
+    top: 16px;
+    right: 16px;
   }
 }

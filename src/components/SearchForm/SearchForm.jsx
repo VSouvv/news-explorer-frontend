@@ -1,43 +1,64 @@
-import { useState } from "react";
+import React from "react";
+import "./SearchForm.css";
+import { useForm } from "react-hook-form";
 
-function SearchForm({ setSearchTerm, onSearch }) {
-  const [input, setInput] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+const SearchForm = ({ handleSearch }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const trimmedInput = input.trim();
-    if (!trimmedInput) {
-      setErrorMessage("Please enter a keyword");
+  const handleSearchSubmit = () => {
+    if (!handleSearch) {
+      console.error("handleSearch is not provided to SearchForm");
+      return;
+    }
+
+    const keyword = getValues("keyword");
+    if (keyword.trim()) {
+      handleSearch(keyword);
     } else {
-      setErrorMessage("");
+      alert("Please enter a valid keyword.");
+    }
+  };
 
-      if (trimmedInput) {
-        setSearchTerm(trimmedInput);
-        onSearch(trimmedInput);
-      }
-    }
-  };
-  const handleChange = (e) => {
-    setInput(e.target.value);
-    if (errorMessage) {
-      setErrorMessage("");
-    }
-  };
   return (
-    <form className="header__search-form" onSubmit={handleSubmit}>
-      <div className="header__search-container">
-        {errorMessage && <p className="header__search-error">{errorMessage}</p>}
-        <input
-          type="text"
-          className="header__search-input"
-          placeholder="Enter topic"
-          value={input}
-          onChange={handleChange}
-        />
-        <button className="header__search-btn">Search</button>
-      </div>
-    </form>
+    <div className="searchForm">
+      <section className="searchForm__container">
+        <h1 className="searchForm__title">What's going on in the world?</h1>
+        <p className="searchForm__description">
+          Find the latest news on any topic and save them in your personal
+          account.
+        </p>
+        <form
+          className="searchForm__searchbar"
+          onSubmit={handleSubmit(handleSearchSubmit)}
+        >
+          <input
+            className="searchForm__searchbar-input"
+            id="searchForm-search"
+            type="text"
+            name="keyword"
+            placeholder="Enter Topic"
+            {...register("keyword", {
+              required: "Keyword is required",
+              validate: (value) =>
+                value.trim() !== "" || "Keyword cannot be empty",
+            })}
+          />
+          {errors.keyword && (
+            <p className="searchForm__invalid">{errors.keyword.message}</p>
+          )}
+
+          <button type="submit" className="searchForm__submit">
+            Search
+          </button>
+        </form>
+      </section>
+    </div>
   );
-}
+};
+
 export default SearchForm;

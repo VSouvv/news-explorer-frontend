@@ -1,41 +1,38 @@
+import React from "react";
 import "./Main.css";
+import About from "../About/About";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import Preloader from "../Preloader/Preloader";
-import NothingFound from "../NothingFound/NothingFound";
+import NotFound from "../NotFound/NotFound";
 
 function Main({
-  articles,
-  onSaveArticle,
+  handleSaveArticle,
   savedArticles,
-  onRemoveArticle,
-  loading,
   isLoggedIn,
-  searchTerm,
-  onSignInClick,
+  filteredArticles,
+  isLoading,
+  searchQuery,
 }) {
   return (
-    <main>
-      {loading ? (
+    <main className="main">
+      {isLoading ? (
         <Preloader />
       ) : (
-        <>
-          {searchTerm && articles.length === 0 && <NothingFound />}
-
-          {articles.length > 0 && (
-            <section className="cards">
-              <h2 className="cards__result">Search results</h2>
-              <NewsCardList
-                articles={articles}
-                onSaveArticle={onSaveArticle}
-                savedArticles={savedArticles}
-                onRemoveArticle={onRemoveArticle}
-                isLoggedIn={isLoggedIn}
-                onSignInClick={onSignInClick}
-              />
-            </section>
+        <section className="card_section">
+          {filteredArticles.length > 0 ? (
+            <NewsCardList
+              articles={filteredArticles}
+              handleSaveArticle={handleSaveArticle}
+              savedArticles={savedArticles}
+              isLoggedIn={isLoggedIn}
+            />
+          ) : (
+            searchQuery && <NotFound />
           )}
-        </>
+        </section>
       )}
+
+      <About />
     </main>
   );
 }

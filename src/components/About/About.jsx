@@ -1,19 +1,19 @@
 import "./About.css";
-import Author from "../../assets/about-me.jpg";
+import AuthorImage from "../../images/about-me.jpg";
 
-function About() {
+const About = () => {
   return (
-    <div className="about">
+    <section className="about">
       <div className="about__container">
-        <img src={Author} alt="author" className="about__author-profile" />
-        <div className="about__author-info">
-          <h2 className="about__author-title">About the author</h2>
-          <p className="about__author-caption">
+        <img src={AuthorImage} className="about__image" alt="Author" />
+        <div className="about__text">
+          <h1 className="about__author">About The Author</h1>
+          <p className="about__description">
             Hello, my name is Vista. I'm a new software engineer with knowledge
             in HTML, CSS, JavaScript, and React. I've always been intrigued with
             programming.
           </p>
-          <p className="about__author-caption">
+          <p className="about__description">
             I have taken TripleTen's Software Engineer course, which was exactly
             what I needed to turn my love for programming into a proper skillset
             and to become a professional software engineer. I now possess the
@@ -23,7 +23,8 @@ function About() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
-}
+};
+
 export default About;

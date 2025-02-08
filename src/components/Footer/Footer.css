@@ -38,7 +38,7 @@
   margin: 30px 40px 26px 0;
 }
 
-.footer__button--type-tripleten {
+.footer__button--tripleten {
   margin-left: 40px;
   text-decoration: none;
   color: black;
@@ -52,9 +52,9 @@
   gap: 24px;
 }
 
-.footer__button--type-home {
+.footer__button--home {
   padding: 0;
-  border-width: 0;
+  border-width: 0cap;
   background: none;
   cursor: pointer;
   text-align: center;
@@ -62,8 +62,7 @@
   color: black;
 }
 
-.footer__icon-image--type-github,
-.footer__icon-image--type-facebook {
+.footer__icon-image {
   width: 24px;
   height: 24px;
 }
@@ -123,6 +122,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     list-style: none;
@@ -143,8 +143,8 @@
     margin: 0 16px 50px 0;
   }
 
-  .footer__button--type-home,
-  .footer__button--type-tripleten {
+  .footer__button--home,
+  .footer__button--tripleten {
     text-decoration: none;
     color: black;
     margin: 0;

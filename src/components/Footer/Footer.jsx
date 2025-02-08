@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
-import GitHubIcon from "../../assets/Git.svg";
-import FacebookIcon from "../../assets/Facebook.svg";
+import GitHubIcon from "../../images/github_icon.svg";
+import FacebookIcon from "../../images/fb_icon.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -14,7 +14,7 @@ const Footer = () => {
       <nav className="footer__nav">
         <ul className="footer__link-list">
           <li className="footer__link">
-            <Link to="/" className="footer__button footer__button--type-home">
+            <Link to="/" className="footer__button footer__button--home">
               Home
             </Link>
           </li>
@@ -22,7 +22,7 @@ const Footer = () => {
             <a
               href="https://tripleten.com/"
               target="_blank"
-              className="footer__button footer__button--type-tripleten"
+              className="footer__button footer__button--tripleten"
             >
               TripleTen
             </a>
@@ -38,7 +38,7 @@ const Footer = () => {
               <img
                 src={GitHubIcon}
                 alt="GitHub"
-                className="footer__icon-image footer__icon-image--type-github"
+                className="footer__icon-image"
               />
             </a>
           </li>
@@ -51,7 +51,7 @@ const Footer = () => {
               <img
                 src={FacebookIcon}
                 alt="Facebook"
-                className="footer__icon-image footer__icon-image--type-facebook"
+                className="footer__icon-image"
               />
             </a>
           </li>
