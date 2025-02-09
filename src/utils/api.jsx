@@ -1,4 +1,4 @@
-export const APIkey = "e9d872c5b5c140929f11aadef08618fb";
+export const APIKey = "e9d872c5b5c140929f11aadef08618fb";
 
 const baseUrl = "https://nomoreparties.co/news/v2/everything";
 
